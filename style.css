@@ -1,11 +1,29 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+body.dark {
+    background-color: black;
+}
+
+img {
+    color: white;
+}
+span {
+    width: 30px;
+    height: 30px;
 }
 
 h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
+}
+
+h1.dark {
+    color: white;
 }
 
 form {
@@ -53,6 +71,10 @@ form input {
     list-style-type: none;
 }
 
+.task-group.dark {
+    color: white;
+}
+
 .label-trash {
     font-size: 30px;
     color: red;
@@ -70,7 +92,23 @@ form input {
     font-size: 18px;
 } 
 
-.btn:hover {
-    background-color: rgb(79, 244, 244);
+.active {
     color: black;
+    background-color: rgb(145, 201, 226);
+}
+
+.btn:hover {
+    background-color: rgb(145, 201, 226);
+    color: black;
+}
+
+.toggle-mode {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: black;
+}
+
+.toggle-mode.dark {
+    background-color: white;
 }

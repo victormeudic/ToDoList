@@ -1,7 +1,37 @@
+const body = document.querySelector('body')
 const createTask = document.querySelector(".btn-add")
 const contentTask = document.querySelector(".form-control")
 const taskGroup = document.querySelector('.task-group')
 const form = document.querySelector("form")
+
+const toggleMode = document.querySelector('.toggle-mode')
+const h1 = document.querySelector('h1')
+toggleMode.addEventListener('click', () => {
+    if (toggleMode.className === "toggle-mode") {
+        toggleMode.classList.add('dark') 
+    } else {
+        toggleMode.classList.remove('dark')
+    }
+
+    if (h1.className === "") {
+        h1.classList.add('dark') 
+    } else {
+        h1.classList.remove('dark')
+    }
+
+    if (body.className === "") {
+        body.classList.add('dark') 
+    } else {
+        body.classList.remove('dark')
+    }
+
+    if (taskGroup.className === "task-group") {
+        taskGroup.classList.add('dark') 
+    } else {
+        taskGroup.classList.remove('dark')
+    }
+
+})
 
 let finalTaskContent = "";
 
@@ -23,6 +53,7 @@ const createToDo = (task) => {
    newLi.classList.add('task-group-item')
    newLi.classList.add('a-faire') 
 
+
    const newInput = document.createElement('input')
    newInput.type = 'checkbox'
    newInput.classList.add('task-input')
@@ -41,6 +72,15 @@ const createToDo = (task) => {
         newLi.classList.add('a-faire')
         newLi.classList.remove('faites')
     }
+
+    toggleMode.addEventListener('click', () => {
+        console.log('work');
+        if (newLabel.className === "task-label") {
+            newLabel.classList.add('dark')
+        } else {
+            newLabel.classList.remove('dark')
+        }
+       })
     
    })
 
@@ -57,8 +97,14 @@ const createToDo = (task) => {
    taskGroup.append(newLi)
 
    const btnTodo = document.querySelector('.btn-todo')
+   const btnDone = document.querySelector('.btn-done')
+   const btnAll = document.querySelector('.btn-all')
 
     btnTodo.addEventListener('click', () => {
+        btnTodo.classList.add('active')
+        btnDone.classList.remove('active')
+        btnAll.classList.remove('active')
+
         if (newLi.className === "task-group-item a-faire") {
             newLi.style.display = "block"
         } else {
@@ -66,9 +112,12 @@ const createToDo = (task) => {
         }
     })
 
-    const btnDone = document.querySelector('.btn-done')
     
     btnDone.addEventListener('click', () => {
+        btnTodo.classList.remove('active')
+        btnDone.classList.add('active')
+        btnAll.classList.remove('active')
+
         if (newLi.className === "task-group-item faites") {
             newLi.style.display = "block"
         } else {
@@ -76,12 +125,13 @@ const createToDo = (task) => {
         }
     })
 
-    const btnAll = document.querySelector('.btn-all')
     
     btnAll.addEventListener('click', () => {
+        btnTodo.classList.remove('active')
+        btnDone.classList.remove('active')
+        btnAll.classList.add('active')
+
         newLi.style.display = "block"
     })
 }
-
-
 
