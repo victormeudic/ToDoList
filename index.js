@@ -20,7 +20,8 @@ createTask.addEventListener('click', () => {
 
 const createToDo = (task) => {
    const newLi = document.createElement('li') 
-   newLi.classList.add('task-group-item') 
+   newLi.classList.add('task-group-item')
+   newLi.classList.add('a-faire') 
 
    const newInput = document.createElement('input')
    newInput.type = 'checkbox'
@@ -33,8 +34,12 @@ const createToDo = (task) => {
    newInput.addEventListener("click", () => {
     if (newInput.checked) {
         newLabel.style.textDecoration = "line-through"
+        newLi.classList.add('faites')
+        newLi.classList.remove('a-faire')
     } else {
         newLabel.style.textDecoration = "none"
+        newLi.classList.add('a-faire')
+        newLi.classList.remove('faites')
     }
     
    })
@@ -50,4 +55,33 @@ const createToDo = (task) => {
    newLi.append(newLabel)
    newLi.append(newDelete)
    taskGroup.append(newLi)
+
+   const btnTodo = document.querySelector('.btn-todo')
+
+    btnTodo.addEventListener('click', () => {
+        if (newLi.className === "task-group-item a-faire") {
+            newLi.style.display = "block"
+        } else {
+            newLi.style.display = "none"
+        }
+    })
+
+    const btnDone = document.querySelector('.btn-done')
+    
+    btnDone.addEventListener('click', () => {
+        if (newLi.className === "task-group-item faites") {
+            newLi.style.display = "block"
+        } else {
+            newLi.style.display = "none"
+        }
+    })
+
+    const btnAll = document.querySelector('.btn-all')
+    
+    btnAll.addEventListener('click', () => {
+        newLi.style.display = "block"
+    })
 }
+
+
+
