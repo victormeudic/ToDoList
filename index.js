@@ -8,7 +8,6 @@ let finalTaskContent = "";
 
 contentTask.addEventListener("input", (e) => {
     finalTaskContent = e.target.value;
-    console.log(finalTaskContent);
   });
 
 form.addEventListener("submit", (e) => {
@@ -43,6 +42,9 @@ const createToDo = (task) => {
    const newDelete = document.createElement('label')
    newDelete.classList.add('label-trash')
    newDelete.innerText = " x"
+   newDelete.addEventListener('click', () => {
+        newLi.remove();
+   })
 
    newLi.append(newInput)
    newLi.append(newLabel)
