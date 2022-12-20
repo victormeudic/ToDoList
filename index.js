@@ -58,6 +58,8 @@ const createToDo = (task) => {
    newInput.type = 'checkbox'
    newInput.classList.add('task-input')
    
+   const newDiv = document.createElement('div')
+   newDiv.classList.add('check-task')
 
    const newLabel = document.createElement('label')
    newLabel.classList.add('task-label')
@@ -71,17 +73,7 @@ const createToDo = (task) => {
         newLabel.style.textDecoration = "none"
         newLi.classList.add('a-faire')
         newLi.classList.remove('faites')
-    }
-
-    toggleMode.addEventListener('click', () => {
-        console.log('work');
-        if (newLabel.className === "task-label") {
-            newLabel.classList.add('dark')
-        } else {
-            newLabel.classList.remove('dark')
-        }
-       })
-    
+    } 
    })
 
    const newDelete = document.createElement('label')
@@ -91,8 +83,9 @@ const createToDo = (task) => {
         newLi.remove();
    })
 
-   newLi.append(newInput)
-   newLi.append(newLabel)
+   newLi.append(newDiv)
+   newDiv.append(newInput)
+   newDiv.append(newLabel)
    newLi.append(newDelete)
    taskGroup.append(newLi)
 
@@ -106,7 +99,7 @@ const createToDo = (task) => {
         btnAll.classList.remove('active')
 
         if (newLi.className === "task-group-item a-faire") {
-            newLi.style.display = "block"
+            newLi.style.display = "flex"
         } else {
             newLi.style.display = "none"
         }
@@ -119,7 +112,7 @@ const createToDo = (task) => {
         btnAll.classList.remove('active')
 
         if (newLi.className === "task-group-item faites") {
-            newLi.style.display = "block"
+            newLi.style.display = "flex"
         } else {
             newLi.style.display = "none"
         }
@@ -131,7 +124,7 @@ const createToDo = (task) => {
         btnDone.classList.remove('active')
         btnAll.classList.add('active')
 
-        newLi.style.display = "block"
+        newLi.style.display = "flex"
     })
 }
 
