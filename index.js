@@ -26,19 +26,24 @@ const createToDo = (task) => {
    const newInput = document.createElement('input')
    newInput.type = 'checkbox'
    newInput.classList.add('task-input')
+   
 
    const newLabel = document.createElement('label')
    newLabel.classList.add('task-label')
    newLabel.innerText = task
+   newInput.addEventListener("click", () => {
+    if (newInput.checked) {
+        newLabel.style.textDecoration = "line-through"
+    } else {
+        newLabel.style.textDecoration = "none"
+    }
+    
+   })
 
    const newDelete = document.createElement('label')
    newDelete.classList.add('label-trash')
+   newDelete.innerText = " x"
 
-   const newBtnDelete = document.createElement('span')
-   newBtnDelete.classList.add('material-symbols-outlined')
-   newBtnDelete.innerText = "delete"
-
-   newDelete.append(newBtnDelete)
    newLi.append(newInput)
    newLi.append(newLabel)
    newLi.append(newDelete)
